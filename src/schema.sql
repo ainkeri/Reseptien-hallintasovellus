@@ -23,11 +23,11 @@ CREATE TABLE comments (
 CREATE TABLE likes (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
-    post_id INTEGER REFERENCES posts,
+    post_id INTEGER REFERENCES posts
 );
 
 CREATE TABLE favorites (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
-    post_id INTEGER REFERENCES posts,
+    post_id INTEGER REFERENCES posts
 );
