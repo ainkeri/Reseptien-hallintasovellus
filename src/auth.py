@@ -1,4 +1,4 @@
-from db import db
+from . import db
 from flask import Blueprint, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 

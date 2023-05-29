@@ -7,7 +7,6 @@ CREATE TABLE users (
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     content TEXT,
-    picture DATA,
     user_id INTEGER REFERENCES users,
     posted_at TIMESTAMP
 );
@@ -26,8 +25,3 @@ CREATE TABLE likes (
     post_id INTEGER REFERENCES posts
 );
 
-CREATE TABLE favorites (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users,
-    post_id INTEGER REFERENCES posts
-);
