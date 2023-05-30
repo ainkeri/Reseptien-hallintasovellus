@@ -1,6 +1,7 @@
-from . import db
-from flask import Blueprint, render_template, request, redirect, url_for
+from .db import db
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import text
 
 auth = Blueprint("auth", __name__)
 
@@ -14,6 +15,8 @@ def logout():
 
 @auth.route("/register", methods=["GET", "POST"])
 def sign_up():
+    if request.method == "GET":
+        return render_template("register.html")
     if request.method == "POST":
         username = request.form.get("username")
         password1 = request.form.get("password1")
@@ -27,10 +30,8 @@ def sign_up():
             return render_template("error.html", message="Password must be at least 7 characters.")
         else:
             hash_value = generate_password_hash(password1)
-            new_user = "INSERT INTO users (username, password) VALUES (:username, :hash_value)"
-            db.session.add(new_user)
+            sql = text("INSERT INTO users (username, password) VALUES (:username, :password)")
+            db.session.execute(sql, {"username":username, "password":hash_value})
             db.session.commit()
             return redirect(url_for("routes.homepage"))
 
-    if request.method == "GET":
-        return render_template("register.html")
