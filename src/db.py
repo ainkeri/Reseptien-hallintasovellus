@@ -3,6 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 def init_db(app):
-    app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://localhost"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://inkeriahlstrom"
     db.init_app(app)
 
