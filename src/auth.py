@@ -7,7 +7,24 @@ auth = Blueprint("auth", __name__)
 
 @auth.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    if request.method == "GET":
+        return render_template("login.html")
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        
+        sql = text("SELECT id, password FROM users WHERE username=:username")
+        result = db.session.execute(sql, {"username":username})
+        user = result.fetchone()
+        if not user:
+            return render_template("error.html", message="User doesn't exist.")
+        else:
+            if check_password_hash(user.password, password):
+                session["user_id"] = user.id
+                return redirect("/")
+            else:
+                return render_template("error.html", message="Incorrect username or password.")
+    
 
 @auth.route("/logout")
 def logout():
