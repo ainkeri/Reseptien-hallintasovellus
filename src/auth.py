@@ -21,14 +21,15 @@ def login():
         else:
             if check_password_hash(user.password, password):
                 session["user_id"] = user.id
-                return redirect("/")
+                return render_template("main.html", message=f"{username}")
             else:
                 return render_template("error.html", message="Incorrect username or password.")
     
 
 @auth.route("/logout")
 def logout():
-    return "<p>Logout</p>"
+    del session["user_id"]
+    return redirect("/")
 
 @auth.route("/register", methods=["GET", "POST"])
 def sign_up():
