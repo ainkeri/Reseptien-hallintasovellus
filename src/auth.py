@@ -52,4 +52,3 @@ def sign_up():
             db.session.execute(sql, {"username":username, "password":hash_value})
             db.session.commit()
             return redirect(url_for("routes.homepage"))
-
