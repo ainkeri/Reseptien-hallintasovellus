@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from sqlalchemy import text
 from .db import db
 
@@ -11,6 +11,4 @@ def homepage():
 
 @routes.route("/main")
 def main():
-    sql = text("SELECT P.content, U.username, P.posted_at FROM posts P, users U WHERE P.user_id = U.id ORDER BY P.id")
-    result = db.session.execute(sql)
-    return render_template("main.html", user=result)
+    return render_template("main.html")
