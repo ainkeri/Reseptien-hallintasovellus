@@ -1,5 +1,4 @@
 from .db import db
-from .auth import auth
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from sqlalchemy import text
 
@@ -18,4 +17,4 @@ def send():
     sql = text("INSERT INTO posts (content, user_id, posted_at) VALUES (:content, :user_id, NOW())")
     db.session.execute(sql, {"content":content, "user_id":user_id})
     db.session.commit()
-    return render_template("main.html")
+    return redirect(url_for("routes.main"))
