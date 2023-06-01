@@ -21,7 +21,7 @@ def login():
         else:
             if check_password_hash(user.password, password):
                 session["user_id"] = user.id
-                return render_template("main.html")
+                return redirect(url_for("routes.main"))
             else:
                 return render_template("error.html", message="Incorrect username or password.")
     

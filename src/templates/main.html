@@ -3,11 +3,11 @@ You are logged in.
 <hr>
 Number of posts: {{ count }}
 <hr>
-{% for message in messages %}
-<i>Post:</i> {{ message[0] }}
+{% for post in recipes %}
+<i>Post:</i> {{ post[0] }}
 <p>
-<i>Sender:</i> {{ message[1] }}
+<i>Sender:</i> {{ post[1] }}
 <p>
-<i>Posted at:</i> {{ message[2].strftime("%Y-%m-%d %H:%M:%S") }}
+<i>Posted at:</i> {{ post[2].strftime("%Y-%m-%d %H:%M:%S") }}
 <hr>
 {% endfor %}

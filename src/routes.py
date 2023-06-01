@@ -11,4 +11,7 @@ def homepage():
 
 @routes.route("/main")
 def main():
-    return render_template("main.html")
+    sql = text("SELECT P.content, U.username, P.posted_at FROM posts P, users U WHERE P.user_id=U.id ORDER BY P.id")
+    recipes = db.session.execute(sql)
+    post_list = recipes.fetchall()
+    return render_template("main.html", count=len(post_list), recipes=post_list)
