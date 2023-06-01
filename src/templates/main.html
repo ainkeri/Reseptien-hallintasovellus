@@ -4,9 +4,9 @@ You are logged in.
 Number of posts: {{ count }}
 <hr>
 {% for post in recipes %}
-<i>Post:</i> {{ post[0] }}
+<i>Recipe:</i> {{ post[0] }}
 <p>
-<i>Sender:</i> {{ post[1] }}
+<i>Created by:</i> {{ post[1] }}
 <p>
 <i>Posted at:</i> {{ post[2].strftime("%Y-%m-%d %H:%M:%S") }}
 <hr>
