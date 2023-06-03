@@ -21,6 +21,6 @@ def send():
     db.session.commit()
     return redirect(url_for("routes.main"))
 
-@posts.route("/recepy")
-def recepy():
-    return render_template("recepy.html")
+@posts.route("/recipe")
+def recipe():
+    return render_template("recipe.html")
