@@ -7,7 +7,7 @@ Sovelluksen ominaisuudet:
 - Käyttäjä voi luoda uuden tunnuksen.
 - Käyttäjä voi kirjautua sisään ja ulos.
 - Käyttäjä voi lisätä uuden reseptin tietokantaan.
-- Lisätylle reseptille voi laittaa nimen, kuvauksen, ainesosat ja valmistusohjeet.
+- Lisätylle reseptille voi laittaa nimen, ainesosat ja valmistusohjeet.
 - Käyttäjä voi muokata tarvittaessaan omaa reseptiään.
 - Käyttäjä voi poistaa oman/omat reseptin/reseptinsä.
 - Reseptejä voi hakea nimen, ainesosan ja ruokalajin perusteella.
