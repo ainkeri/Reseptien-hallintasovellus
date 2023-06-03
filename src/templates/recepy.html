@@ -1,1 +1,10 @@
 <a href="/main">Return to main page</a>
+<hr>
+{% for post in full_recipy %}
+<b>Name:</b> {{ post[0] }}
+<p>
+<b>Ingredients:</b> {{ post[3] }}
+<p>
+<b>Instructions:</b> {{ post[4] }}
+<hr>
+{% endfor %}
