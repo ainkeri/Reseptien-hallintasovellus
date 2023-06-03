@@ -20,5 +20,5 @@ def main():
 def recepy():
     sql = text("SELECT P.content, P.ingredients, P.instructions FROM posts P, users U WHERE P.user_id=U.id ORDER BY P.id")
     full_recepy = db.session.execute(sql)
-    post_list = full_recepy.fetchone()
-    return render_template("recepy.html", full_recipy=post_list)
+    list = full_recepy.fetchone()
+    return render_template("recepy.html", full_recipy=list)
