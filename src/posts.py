@@ -12,9 +12,15 @@ def new():
 def send():
     content = request.form.get("content")
     user_id = session.get("user_id", 0)
+    ingredients = request.form.get("ingredients")
+    instructions = request.form.get("instructions")
     if user_id == 0:
         return render_template("error.html", message="Post failed")
-    sql = text("INSERT INTO posts (content, user_id, posted_at) VALUES (:content, :user_id, NOW())")
-    db.session.execute(sql, {"content":content, "user_id":user_id})
+    sql = text("INSERT INTO posts (content, user_id, posted_at, ingredients, instructions) VALUES (:content, :user_id, NOW(), :ingredients, :instructions)")
+    db.session.execute(sql, {"content":content, "user_id":user_id, "ingredients":ingredients, "instructions":instructions})
     db.session.commit()
     return redirect(url_for("routes.main"))
+
+@posts.route("/recepy")
+def recepy():
+    return render_template("recepy.html")

@@ -9,6 +9,8 @@ CREATE TABLE posts (
     content TEXT,
     user_id INTEGER REFERENCES users,
     posted_at TIMESTAMP
+    ingredients TEXT,
+    instructions TEXT,
 );
 
 CREATE TABLE comments (
