@@ -1,10 +1,8 @@
 <a href="/main">Return to main page</a>
 <hr>
-{% for post in full_recipy %}
-<b>Name:</b> {{ post[0] }}
+<b>Name:</b> {{ recipe.content }}
 <p>
-<b>Ingredients:</b> {{ post[3] }}
+<b>Ingredients:</b> {{ recipe.ingredients }}
 <p>
-<b>Instructions:</b> {{ post[4] }}
+<b>Instructions:</b> {{ recipe.instructions }}
 <hr>
-{% endfor %}
