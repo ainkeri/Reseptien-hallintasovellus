@@ -21,7 +21,7 @@ Sovelluksen tulevat ominaisuudet:
 ## Käyttöohje
 
 - Kloonaa repositorio koneellesi
-- Luo Pythonin virtuaaliympäristö kansion sisään komennolla pytho3n -m venv venv
+- Luo Pythonin virtuaaliympäristö kansion sisään komennolla python3 -m venv venv
 - Aktivoi virtuaaliympäristö: source venv/bin/activate
 - Asenna flask pip install flask
 - Asenna riippuvuudet pip install -r requirements.txt
