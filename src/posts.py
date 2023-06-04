@@ -27,11 +27,11 @@ def send():
 def recipe():
     return render_template("recipe.html")
 
-@posts.route("/edit/<string:recipe_name>", methods=["GET", "POST"])
-def edit(recipe_name):
+@posts.route("/edit/<int:recipe_id>", methods=["GET", "POST"])
+def edit(recipe_id):
     if request.method == "GET":
         sql = text("SELECT content, ingredients, instructions FROM posts WHERE id = :recipe_id")
-        recipe = db.session.execute(sql, {"recipe_name": recipe_name}).fetchone()
+        recipe = db.session.execute(sql, {"recipe_id": recipe_id}).fetchone()
 
         if recipe is None:
             return render_template("error.html", message="Recipe not found.")
@@ -43,9 +43,9 @@ def edit(recipe_name):
         ingredients = request.form.get("ingredients")
         instructions = request.form.get("ingredients")
 
-        sql = text("UPDATE posts SET content = :content, ingredients = :ingredients, instructions = :instructions WHERE id = :recipe_name")
-        db.session.execute(sql, {"content": content, "ingredients": ingredients, "instructions": instructions, "recipe_name": recipe_name})
+        sql = text("UPDATE posts SET content = :content, ingredients = :ingredients, instructions = :instructions WHERE id = :recipe_id")
+        db.session.execute(sql, {"content": content, "ingredients": ingredients, "instructions": instructions, "recipe_name": recipe_id})
         db.session.commit()
 
-        return render_template("recipe.html")
+        return redirect(url_for("routes.main"))
 

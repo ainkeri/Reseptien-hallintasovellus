@@ -1,0 +1,12 @@
+<form action="/edit/{{ recipe[0] }}" method="POST">
+    <label for="content">Name: </label>
+    <textarea name="content" id="content">{{ recipe[0] }}</textarea>
+    <br>
+    <label for="ingredients">Ingredients: </label>
+    <textarea name="ingredients" id="ingredients">{{ recipe[1] }}</textarea>
+    <br>
+    <label for="instructions">Instructions: </label>
+    <textarea name="instructions" id="instructions">{{ recipe[2] }}</textarea>
+    <br>
+    <input type="submit" value="Save">
+</form>
