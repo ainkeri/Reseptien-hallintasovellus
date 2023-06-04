@@ -35,17 +35,17 @@ def edit(recipe_id):
 
         if recipe is None:
             return render_template("error.html", message="Recipe not found.")
-    
+
         return render_template("edit_post.html", recipe=recipe)
 
     elif request.method == "POST":
         content = request.form.get("content")
         ingredients = request.form.get("ingredients")
-        instructions = request.form.get("ingredients")
+        instructions = request.form.get("instructions")
 
         sql = text("UPDATE posts SET content = :content, ingredients = :ingredients, instructions = :instructions WHERE id = :recipe_id")
-        db.session.execute(sql, {"content": content, "ingredients": ingredients, "instructions": instructions, "recipe_name": recipe_id})
+        db.session.execute(sql, {"content": content, "ingredients": ingredients, "instructions": instructions, "recipe_id": recipe_id})
         db.session.commit()
 
-        return redirect(url_for("routes.main"))
+        return redirect(url_for("routes.recipe", recipe_id=recipe_id))
 
