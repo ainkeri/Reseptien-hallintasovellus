@@ -48,4 +48,3 @@ def edit(recipe_id):
         db.session.commit()
 
         return redirect(url_for("routes.recipe", recipe_id=recipe_id))
-
