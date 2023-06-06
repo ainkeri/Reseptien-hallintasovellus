@@ -25,7 +25,7 @@ Sovelluksen tulevat ominaisuudet:
 - Aktivoi virtuaaliympäristö: source venv/bin/activate
 - Asenna flask pip install flask
 - Asenna riippuvuudet pip install -r requirements.txt
-- Aseta oma PostgreSQL-tietokanta nimi db.py kohtaan "postgresql:///{tietokannan nimi}"
+- Aseta oma PostgreSQL-tietokanta nimi .env kohtaan "postgresql:///{tietokannan nimi}"
 - Aseta oma salainen avain __init__.py tiedoston kohtaan app.config["SECRET_KEY"] = "salainen avain"
 - Luo schema.sql -tiedoston mukaiset tietokantataulut PostgreSQL-komentoikkunassa
 - Aloita sovelluksen käyttäminen Reseptien-hallintasovellus -kansiossa
