@@ -30,7 +30,7 @@ def recipe():
 @posts.route("/edit/<int:recipe_id>", methods=["GET", "POST"])
 def edit(recipe_id):
     if request.method == "GET":
-        sql = text("SELECT content, ingredients, instructions FROM posts WHERE id = :recipe_id")
+        sql = text("SELECT content, ingredients, id FROM posts WHERE id = :recipe_id")
         recipe = db.session.execute(sql, {"recipe_id": recipe_id}).fetchone()
 
         if recipe is None:
