@@ -1,5 +1,5 @@
 from .db import db
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session, abort
 from sqlalchemy import text
 
 posts = Blueprint("posts", __name__)
@@ -49,3 +49,14 @@ def edit(recipe_id):
         db.session.commit()
 
         return redirect(url_for("routes.recipe", recipe_id=recipe_id))
+
+@posts.route("/delete/<int:recipe_id>", methods=["GET", "POST"])
+def delete(recipe_id):
+    sql = text("DELETE FROM posts WHERE id=:recipe_id")
+    result = db.session.execute(sql, {"recipe_id": recipe_id})
+    db.session.commit()
+
+    if result.rowcount == 0:
+        abort(404)
+
+    return redirect(url_for("routes.main"))
