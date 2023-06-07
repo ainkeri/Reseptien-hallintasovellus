@@ -30,13 +30,14 @@ def recipe():
 @posts.route("/edit/<int:recipe_id>", methods=["GET", "POST"])
 def edit(recipe_id):
     if request.method == "GET":
-        sql = text("SELECT P.content, P.ingredients, P.instructions, U.id FROM posts P, users U WHERE U.id=P.user_id AND P.id = :recipe_id")
-        recipe = db.session.execute(sql, {"recipe_id": recipe_id}).fetchone()
+        sql = text("SELECT P.content, P.ingredients, P.instructions, P.user_id FROM posts P, users U WHERE U.id=P.user_id AND P.id=:recipe_id")
+        edit_recipe = db.session.execute(sql, {"recipe_id": recipe_id})
+        edit_post = edit_recipe.fetchone()
 
         if recipe is None:
             return render_template("error.html", message="Recipe not found.")
 
-        return render_template("edit_post.html", recipe=recipe)
+        return render_template("edit_post.html", edit_post=edit_post)
 
     elif request.method == "POST":
         content = request.form.get("content")
