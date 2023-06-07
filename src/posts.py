@@ -30,7 +30,7 @@ def recipe():
 @posts.route("/edit/<int:recipe_id>", methods=["GET", "POST"])
 def edit(recipe_id):
     if request.method == "GET":
-        sql = text("SELECT P.content, P.ingredients, P.instructions, P.user_id FROM posts P, users U WHERE U.id=P.user_id AND P.id=:recipe_id")
+        sql = text("SELECT P.content, P.ingredients, P.instructions, P.user_id, P.id FROM posts P, users U WHERE U.id=P.user_id AND P.id=:recipe_id")
         edit_recipe = db.session.execute(sql, {"recipe_id": recipe_id})
         edit_post = edit_recipe.fetchone()
 
