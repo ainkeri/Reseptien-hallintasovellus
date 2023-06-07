@@ -8,10 +8,11 @@ Sovelluksen toimivat ominaisuudet:
 - Käyttäjä voi kirjautua sisään ja ulos.
 - Käyttäjä voi lisätä uuden reseptin tietokantaan.
 - Lisätylle reseptille voi laittaa nimen, ainesosat ja valmistusohjeet.
+- Käyttäjä voi muokata tarvittaessaan omaa reseptiään.
+
 
 Sovelluksen tulevat ominaisuudet:
 
-- Käyttäjä voi muokata tarvittaessaan omaa reseptiään.
 - Käyttäjä voi poistaa oman/omat reseptin/reseptinsä.
 - Reseptejä voi hakea nimen, ainesosan ja ruokalajin perusteella.
 - Käyttäjät voivat tallentaa suosikkireseptejään.
