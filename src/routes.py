@@ -18,7 +18,7 @@ def main():
 
 @routes.route("/recipe/<int:recipe_id>")
 def recipe(recipe_id):
-    sql = text("SELECT P.content, P.ingredients, P.instructions, P.user_id FROM posts P, users U WHERE P.user_id=U.id AND P.id=:recipe_id")
+    sql = text("SELECT P.content, P.ingredients, P.instructions, P.user_id, P.id FROM posts P, users U WHERE P.user_id=U.id AND P.id=:recipe_id")
     full_recipe = db.session.execute(sql, {"recipe_id":recipe_id})
     recipe = full_recipe.fetchone()
 
