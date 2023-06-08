@@ -26,3 +26,10 @@ def recipe(recipe_id):
         return render_template("error.html", message="Recipe not found")
     
     return render_template("recipe.html", recipe=recipe)
+
+@routes.route("/search")
+def search():
+    query = request.args.get("query")
+    sql = text("SELECT * FROM posts WHERE to_tsvector('english', content) @@ to_tsquery(:query)")
+    matching_posts = db.session.execute(sql, {"query": query}).fetchall()
+    return render_template("search.html", query=query, posts=matching_posts, count=len(matching_posts))
