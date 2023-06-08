@@ -1,7 +1,12 @@
-You are logged in.
-<a href="/new">New post</a> | <a href="/logout">Log out</a>
+You are logged in. | <a href="/logout">Log out</a>
 <hr>
-Number of posts: {{ count }}
+<form action="/search" method="GET">
+    <input type="text" name="query" placeholder="Search recepies">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+Number of posts: {{ count }} | <a href="/new">Create a new post</a>
 <hr>
 {% for post in recipes %}
     <i>Recipe:</i> {{ post[1] }}
@@ -13,3 +18,4 @@ Number of posts: {{ count }}
     <a href="/recipe/{{ post[0] }}">Click to view full recipe</a>
     <hr>
 {% endfor %}
+
