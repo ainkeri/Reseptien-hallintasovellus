@@ -10,10 +10,10 @@ Sovelluksen toimivat ominaisuudet:
 - Lisätylle reseptille voi laittaa nimen, ainesosat ja valmistusohjeet.
 - Käyttäjä voi muokata tarvittaessaan omaa reseptiään.
 - Käyttäjä voi poistaa oman/omat reseptin/reseptinsä.
+- Reseptejä voi hakea nimen perusteella.
 
 Sovelluksen tulevat ominaisuudet:
 
-- Reseptejä voi hakea nimen, ainesosan ja ruokalajin perusteella.
 - Käyttäjät voivat tallentaa suosikkireseptejään.
 - Reseptejä voi myös kommentoida ja arvostella.
 - Mahdollinen ostolistatoiminto: luo automaattisesti ostoslistan käyttäjän valitsemista resepteistä.
