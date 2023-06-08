@@ -1,0 +1,12 @@
+{% if count > 0 %}
+    <h2>Search results for "{{ query }}":</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="/recipe/{{ post.id }}">{{ post.content }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No matching posts found.</p>
+{% endif %}
