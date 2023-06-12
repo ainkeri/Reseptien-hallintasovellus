@@ -8,7 +8,7 @@ CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     content TEXT,
     user_id INTEGER REFERENCES users,
-    posted_at TIMESTAMP
+    posted_at TIMESTAMP,
     ingredients TEXT,
     instructions TEXT,
 );
