@@ -1,10 +1,20 @@
 <form action="/send" method="post">
-New recipe
-<p>
-Name: <textarea name="content" rows="1" cols="20"></textarea>
-<p>
-Ingredients: <textarea name="ingredients" rows="20" cols="50"></textarea>
-<p>
-Instructions: <textarea name="instructions" rows="20" cols="50"></textarea>    
-<input type="submit" value="Post">
+    <h2>New recipe</h2>
+
+    <p>
+        Name: <br>
+        <textarea name="content" rows="1" cols="30" placeholder="Enter name of the recipe"></textarea>
+    </p>
+
+    <p>
+        Ingredients: <br> 
+        <textarea name="ingredients" rows="5" cols="30" placeholder="Enter ingredients, one per line"></textarea>
+    </p>
+
+    <p>
+        Instructions: <br>
+        <textarea name="instructions" rows="10" cols="30" placeholder="Enter steps, one per line"></textarea>    
+    </p>
+
+    <input type="submit" value="Post">
 </form>
