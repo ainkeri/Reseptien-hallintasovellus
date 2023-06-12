@@ -2,9 +2,11 @@
     <h2>Search results for "{{ query }}":</h2>
     <ul>
         {% for post in posts %}
-            <li>
-                <a href="/recipe/{{ post.id }}">{{ post.content }}</a>
-            </li>
+            {% if query.lower() in post.content.lower() %}
+                <li>
+                    <a href="/recipe/{{ post.id }}">{{ post.content }}</a>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% else %}
