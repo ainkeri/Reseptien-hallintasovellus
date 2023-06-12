@@ -30,6 +30,6 @@ def recipe(recipe_id):
 @routes.route("/search")
 def search():
     query = request.args.get("query")
-    sql = text("SELECT * FROM posts WHERE to_tsvector('english', content) @@ to_tsquery(:query)")
+    sql = text("SELECT * FROM posts WHERE lower(content) LIKE '%' || lower(:query) || '%'")
     matching_posts = db.session.execute(sql, {"query": query}).fetchall()
     return render_template("search.html", query=query, posts=matching_posts, count=len(matching_posts))
