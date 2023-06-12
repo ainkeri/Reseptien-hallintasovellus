@@ -1,12 +1,14 @@
-<form action="/edit/{{ edit_post[4] }}" method="POST">
-    <label for="content">Name: </label>
-    <textarea name="content" id="content">{{ edit_post[0] }}</textarea>
-    <br>
-    <label for="ingredients">Ingredients: </label>
-    <textarea name="ingredients" id="ingredients">{{ edit_post[1] }}</textarea>
-    <br>
-    <label for="instructions">Instructions: </label>
-    <textarea name="instructions" id="instructions">{{ edit_post[2] }}</textarea>
-    <br>
-    <input type="submit" value="Save">
-</form>
+{% if session.user_id == edit_post[3] %}
+    <form action="/edit/{{ edit_post[4] }}" method="POST">
+        <label for="content">Name: </label>
+        <textarea name="content" id="content">{{ edit_post[0] }}</textarea>
+        <br>
+        <label for="ingredients">Ingredients: </label>
+        <textarea name="ingredients" id="ingredients">{{ edit_post[1] }}</textarea>
+        <br>
+        <label for="instructions">Instructions: </label>
+        <textarea name="instructions" id="instructions">{{ edit_post[2] }}</textarea>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+{% endif %}
