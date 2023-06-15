@@ -25,4 +25,4 @@
     | <a href="/delete/{{ recipe[4] }}" onclick="return confirm('Are you sure you want to delete this post?')">Delete post</a>
 {% endif %}
 <hr>
-<a href="/comments_list">Comments</a>
+<a href="/comments_list/{{ recipe.id }}">Show comments</a>
