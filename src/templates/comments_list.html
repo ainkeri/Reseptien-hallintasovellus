@@ -1,1 +1,12 @@
-Comments here
+<a href="/new_comment">Add new comment</a>
+<hr>
+Comments:
+{% for comment in comments %}
+<hr>
+    <i>Comment:</i> {{ comment[1] }}
+    <p>
+    <i>Commented by:</i> {{ comment[0] }}
+    <p>
+    <i>Sent at:</i> {{ comment[3].strftime("%Y-%m-%d %H:%M:%S") }}
+<hr>
+{% endfor %}
