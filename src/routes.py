@@ -32,4 +32,13 @@ def search():
     query = request.args.get("query")
     sql = text("SELECT * FROM posts WHERE lower(content) LIKE '%' || lower(:query) || '%'")
     matching_posts = db.session.execute(sql, {"query": query}).fetchall()
+    
     return render_template("search.html", query=query, posts=matching_posts, count=len(matching_posts))
+
+@routes.route("/comments_list/<int:recipe_id>")
+def comments_list(recipe_id):
+    sql = text("SELECT U.username, C.content, C.post_id, C.sent_at FROM comments C, users U WHERE C.user_id = U.id AND C.post_id=:recipe_id ORDER BY C.id")
+    comments_result = db.session.execute(sql, {"recipe_id":recipe_id}).fetchall()
+    comments = [dict(comment) for comment in comments_result]
+
+    return render_template("comments_list.html", comments=comments, recipe_is=recipe_id)
