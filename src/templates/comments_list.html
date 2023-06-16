@@ -1,6 +1,7 @@
-<a href="/new_comment">Add new comment</a>
+<a href="/new_comment/{{ post_id }}">Add new comment</a>
 <hr>
 Comments:
+<hr>
 {% for comment in comments %}
 <hr>
     <i>Comment:</i> {{ comment['content'] }}
