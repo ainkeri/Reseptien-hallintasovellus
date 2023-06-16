@@ -18,5 +18,5 @@ def send_comment():
     sql = text("INSERT INTO comments (content, user_id, post_id, sent_at) VALUES (:content, :user_id, :post_id, NOW())")
     db.session.execute(sql, {"content":content, "user_id":user_id, "post_id":post_id})
     db.session.commit()
-    return redirect(url_for("routes.comments_list"))
+    return redirect(url_for("routes.comments_list", recipe_id=post_id))
 
