@@ -6,13 +6,11 @@ comments = Blueprint("comments", __name__)
 
 @comments.route("/new_comment/<int:post_id>")
 def new_comment(post_id):
-    post_id = request.form.get("post_id")
     return render_template("new_comment.html", post_id=post_id)
 
 @comments.route("/send_comment/<int:post_id>", methods=["POST"])
 def send_comment(post_id):
     content = request.form.get("content")
-    post_id = request.form.get("post_id")
     user_id = session.get("user_id", 0)
 
     if not post_id:

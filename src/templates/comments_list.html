@@ -4,10 +4,10 @@ Comments:
 <hr>
 {% for comment in comments %}
 <hr>
-    <i>Comment:</i> {{ comment['content'] }}
+    <i>Comment:</i> {{ comment[1] }}
     <p>
-    <i>Commented by:</i> {{ comment['username'] }}
+    <i>Commented by:</i> {{ comment[0] }}
     <p>
-    <i>Sent at:</i> {{ comment['sent_at'].strftime("%Y-%m-%d %H:%M:%S") }}
+    <i>Sent at:</i> {{ comment[3].strftime("%Y-%m-%d %H:%M:%S") }}
 <hr>
 {% endfor %}
