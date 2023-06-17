@@ -37,7 +37,7 @@ def search():
 
 @routes.route("/comments_list/<int:post_id>")
 def comments_list(post_id):
-    sql = text("SELECT U.username, C.content, C.post_id, C.sent_at FROM comments C, users U WHERE C.user_id = U.id AND C.post_id=:post_id ORDER BY C.id")
+    sql = text("SELECT U.username, C.content, C.post_id, C.sent_at, C.user_id, C.id FROM comments C, users U WHERE C.user_id = U.id AND C.post_id=:post_id ORDER BY C.id")
     comments_result = db.session.execute(sql, {"post_id":post_id})
     comments = comments_result.fetchall()
 
