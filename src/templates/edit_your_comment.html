@@ -1,6 +1,9 @@
 {% if session.user_id == edit_comment2[2] %}
+    <a href="/comments_list/{{ edit_comment2[3] }}">Return to comments</a>
+    <hr>
     <form action="/edit_comment/{{ edit_comment2[0] }}" method="POST">
-        <label for="content">Name: </label>
+        <label for="content">Comment: </label>
+        <br>
         <textarea name="content" id="content">{{ edit_comment2[1] }}</textarea>
         <br>
         <input type="submit" value="Save">
