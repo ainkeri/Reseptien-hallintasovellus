@@ -11,7 +11,7 @@ Sovelluksen toimivat ominaisuudet:
 - Käyttäjä voi muokata tarvittaessaan omaa reseptiään.
 - Käyttäjä voi poistaa oman/omat reseptin/reseptinsä.
 - Reseptejä voi hakea nimen perusteella.
-- Käyttäjä voi kommentoida reseptejä.
+- Käyttäjä voi kommentoida reseptejä, muokata ja poistaa niitä.
 
 Sovelluksen tulevat ominaisuudet:
 
