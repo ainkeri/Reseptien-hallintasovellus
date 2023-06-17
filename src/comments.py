@@ -1,5 +1,5 @@
 from .db import db
-from flask import Blueprint, render_template, request, redirect, url_for, session, abort
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from sqlalchemy import text
 
 comments = Blueprint("comments", __name__)
@@ -41,18 +41,23 @@ def edit_comment(comment_id):
         db.session.execute(sql, {"content": content, "comment_id": comment_id})
         db.session.commit()
 
+        sql = text("SELECT post_id FROM comments WHERE id=:comment_id")
+        result = db.session.execute(sql, {"comment_id": comment_id})
+        post_id = result.fetchone()[0]
+
         return redirect(url_for("routes.comments_list", post_id=post_id))
 
 
 @comments.route("/delete_comment/<int:comment_id>", methods=["GET", "POST"])
 def delete_comment(comment_id):
-    sql = text("DELETE FROM comments WHERE id=:comment_id")
+    sql = text("SELECT post_id FROM comments WHERE id=:comment_id")
     result = db.session.execute(sql, {"comment_id": comment_id})
+    post_id = result.fetchone()[0]
+
+    sql = text("DELETE FROM comments WHERE id=:comment_id")
+    db.session.execute(sql, {"comment_id": comment_id})
     db.session.commit()
 
-    if result.rowcount == 0:
-        abort(404)
-
-    return redirect(url_for("routes.comments_list"))
+    return redirect(url_for("routes.comments_list", post_id=post_id))
 
  
