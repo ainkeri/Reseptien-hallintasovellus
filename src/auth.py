@@ -40,12 +40,18 @@ def sign_up():
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
 
+        sql = text("SELECT * FROM users WHERE username=:username")
+        result = db.session.execute(sql, {"username": username})
+        existing_user = result.fetchone()
+
         if len(username) < 2:
             return render_template("error.html", message="Username must be longer than 1 character.")
         elif password1 != password2:
             return render_template("error.html", message="Passwords do not match.")
         elif len(password1) < 7:
             return render_template("error.html", message="Password must be at least 7 characters.")
+        elif existing_user:
+            return render_template("error.html", message="Username already exists.")
         else:
             hash_value = generate_password_hash(password1)
             sql = text("INSERT INTO users (username, password) VALUES (:username, :password)")
