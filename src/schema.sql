@@ -10,14 +10,15 @@ CREATE TABLE posts (
     user_id INTEGER REFERENCES users,
     posted_at TIMESTAMP,
     ingredients TEXT,
-    instructions TEXT,
+    instructions TEXT
 );
 
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     content TEXT,
     user_id INTEGER REFERENCES users,
-    post_id INTEGER REFERENCES posts,
+    post_id INTEGER REFERENCES posts
+    ON DELETE CASCADE,
     sent_at TIMESTAMP
 );
 
