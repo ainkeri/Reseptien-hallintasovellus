@@ -10,5 +10,6 @@
         <textarea name="instructions" id="instructions">{{ edit_post[2] }}</textarea>
         <br>
         <input type="submit" value="Save">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
     </form>
 {% endif %}
