@@ -1,5 +1,5 @@
 from .db import db
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session, abort
 from sqlalchemy import text
 
 comments = Blueprint("comments", __name__)
@@ -10,6 +10,8 @@ def new_comment(post_id):
 
 @comments.route("/send_comment/<int:post_id>", methods=["POST"])
 def send_comment(post_id):
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     content = request.form.get("content")
     user_id = session.get("user_id", 0)
 
@@ -34,6 +36,8 @@ def edit_comment(comment_id):
         return render_template("edit_your_comment.html", edit_comment2=edit_comment2)
 
     elif request.method == "POST":
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         content = request.form.get("content")
         post_id = request.form.get("post_id")
 

@@ -10,6 +10,8 @@ def new():
 
 @posts.route("/send", methods=["POST"])
 def send():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     content = request.form.get("content")
     user_id = session.get("user_id", 0)
     ingredients = request.form.get("ingredients")
@@ -36,6 +38,8 @@ def edit(recipe_id):
         return render_template("edit_post.html", edit_post=edit_post)
 
     elif request.method == "POST":
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         content = request.form.get("content")
         ingredients = request.form.get("ingredients")
         instructions = request.form.get("instructions")
