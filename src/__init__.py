@@ -9,12 +9,14 @@ def create_app():
     from .auth import auth
     from .posts import posts
     from .comments import comments
+    from .likes import likes
     from .db import init_db
 
     app.register_blueprint(routes)
     app.register_blueprint(auth)
     app.register_blueprint(posts)
     app.register_blueprint(comments)
+    app.register_blueprint(likes)
 
     init_db(app)
 
