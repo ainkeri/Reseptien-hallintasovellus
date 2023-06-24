@@ -1,7 +1,7 @@
 <h2>Shopping cart</h2>
 {% for ingredient in ingredients %}
     <hr>
-    <b>Ingredients:</b>
+    <b>Ingredients for <a href="/recipe/{{ ingredient[3] }}">{{ ingredient[2] }}:</a></b>
     <ul>
     {% for line in ingredient[0].split('\n')%}
         {% if line.strip() != "" %}
