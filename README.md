@@ -12,11 +12,8 @@ Sovelluksen toimivat ominaisuudet:
 - Käyttäjä voi poistaa oman/omat reseptin/reseptinsä.
 - Reseptejä voi hakea nimen perusteella.
 - Käyttäjä voi kommentoida reseptejä, muokata ja poistaa niitä.
-
-Sovelluksen tulevat ominaisuudet:
-
-- Käyttäjät voivat tallentaa suosikkireseptejään.
-- Mahdollinen ostolistatoiminto: luo automaattisesti ostoslistan käyttäjän valitsemista resepteistä.
+- Käyttäjät voivat tykätä suosikkireseptejään.
+- Käyttäjä voi luoda haluamastaan reseptistä ostoslistan.
 
 ## Käyttöohje
 
