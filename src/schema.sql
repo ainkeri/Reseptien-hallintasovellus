@@ -26,5 +26,6 @@ CREATE TABLE likes (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
     post_id INTEGER REFERENCES posts
+    ON DELETE CASCADE
 );
 
