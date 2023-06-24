@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from sqlalchemy import text
 from .db import db
+from .likes import likes
 
 routes = Blueprint("routes", __name__)
 
@@ -25,7 +26,15 @@ def recipe(recipe_id):
     if recipe is None:
         return render_template("error.html", message="Recipe not found")
     
-    return render_template("recipe.html", recipe=recipe)
+    sql2 = text("SELECT user_id FROM likes WHERE post_id=:recipe_id")
+    liked_users = db.session.execute(sql2, {"recipe_id": recipe_id}).fetchall()
+    liked_users = [row.user_id for row in liked_users]
+
+    sql3 = text("SELECT COUNT(*) FROM likes WHERE post_id=:recipe_id")
+    result = db.session.execute(sql3, {"recipe_id": recipe_id})
+    like_count = result.fetchone()[0]
+    
+    return render_template("recipe.html", recipe=recipe, like_count=like_count, liked_users=liked_users)
 
 @routes.route("/search")
 def search():
