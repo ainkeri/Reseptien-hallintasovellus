@@ -1,6 +1,13 @@
 <h2>Shopping cart</h2>
 {% for ingredient in ingredients %}
     <hr>
-    <b>Ingredients:</b> {{ ingredients }}
+    <b>Ingredients:</b>
+    <ul>
+    {% for line in ingredient[0].split('\n')%}
+        {% if line.strip() != "" %}
+            <li>{{ line }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
 {% endfor %}
 <hr>
