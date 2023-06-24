@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session
 from sqlalchemy import text
 from .db import db
 from .likes import likes
@@ -12,7 +12,7 @@ def homepage():
 
 @routes.route("/main")
 def main():
-    sql = text("SELECT P.id, P.content, U.username, P.posted_at FROM posts P, users U WHERE P.user_id=U.id ORDER BY P.id")
+    sql = text("SELECT P.id, P.content, U.username, P.posted_at, U.id FROM posts P, users U WHERE P.user_id=U.id ORDER BY P.id")
     recipes = db.session.execute(sql)
     post_list = recipes.fetchall()
     return render_template("main.html", count=len(post_list), recipes=post_list)
@@ -51,3 +51,11 @@ def comments_list(post_id):
     comments = comments_result.fetchall()
 
     return render_template("comments_list.html", comments=comments, post_id=post_id)
+
+@routes.route("/show_cart")
+def show_cart():
+    user_id = session.get("user_id", 0)
+    sql = text("SELECT ingredients, user_id FROM cart WHERE user_id=:user_id")
+    ingredients = db.session.execute(sql, {"user_id": user_id}).fetchall()
+
+    return render_template("shopping_cart.html", ingredients=ingredients, user_id=user_id)
