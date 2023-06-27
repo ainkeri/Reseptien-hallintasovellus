@@ -34,7 +34,6 @@ CREATE TABLE cart (
     user_id INTEGER REFERENCES users,
     post_id INTEGER REFERENCES posts
     ON DELETE CASCADE,
-    ingredients TEXT,
-    quantity INTEGER DEFAULT 1
+    ingredients TEXT
 );
 
