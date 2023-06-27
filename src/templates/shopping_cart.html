@@ -9,6 +9,7 @@
             <li>{{ line }}</li>
         {% endif %}
     {% endfor %}
+    <a href="/delete_cart/{{ ingredient[4] }}" onclick="return confirm('Are you sure you want to delete this list?')">Delete</a>
     </ul>
 {% endfor %}
 <hr>
