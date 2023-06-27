@@ -55,7 +55,7 @@ def comments_list(post_id):
 @routes.route("/show_cart")
 def show_cart():
     user_id = session.get("user_id", 0)
-    sql = text("SELECT C.ingredients, C.user_id, P.content, P.id FROM cart C, posts P WHERE C.user_id=:user_id AND P.id=C.post_id")
+    sql = text("SELECT C.ingredients, C.user_id, P.content, P.id, C.id FROM cart C, posts P WHERE C.user_id=:user_id AND P.id=C.post_id")
     ingredients = db.session.execute(sql, {"user_id": user_id}).fetchall()
 
     return render_template("shopping_cart.html", ingredients=ingredients, user_id=user_id)
