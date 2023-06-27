@@ -21,3 +21,18 @@ def add_to_cart(recipe_id):
     db.session.commit()
 
     return render_template("success.html")
+
+@shopping_cart.route("/delete_cart/<int:item_id>", methods=["GET", "POST"])
+def delete_cart(item_id):
+    sql = text("DELETE FROM cart WHERE id=:item_id")
+    result = db.session.execute(sql, {"item_id": item_id})
+    db.session.commit()
+
+    if result.rowcount == 0:
+        abort(404)
+
+    return redirect(url_for("routes.show_cart"))
+
+
+
+
