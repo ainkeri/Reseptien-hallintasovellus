@@ -20,7 +20,7 @@ def add_to_cart(recipe_id):
     db.session.execute(sql2, {"post_id":recipe_id, "user_id":user_id, "ingredients":ingredients_text})
     db.session.commit()
 
-    return render_template("success.html")
+    return render_template("success.html", recipe_id=recipe_id)
 
 @shopping_cart.route("/delete_cart/<int:item_id>", methods=["GET", "POST"])
 def delete_cart(item_id):
