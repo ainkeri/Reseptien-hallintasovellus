@@ -6,16 +6,22 @@
 <a href="/main">Return to main page</a>
 <h2>Shopping list</h2>
 
-{% for ingredient in ingredients %}
-    <div class="content">
-        <b>Ingredients needed for<a href="/recipe/{{ ingredient[3] }}">{{ ingredient[2] }}:</a></b>
-        <ul>
-        {% for line in ingredient[0].split('\n')%}
-            {% if line.strip() != "" %}
-                <li>{{ line }}</li>
-            {% endif %}
-        {% endfor %}
-        </ul> 
-        <a href="/delete_cart/{{ ingredient[4] }}" onclick="return confirm('Are you sure you want to delete this list?')">Delete</a> 
-    </div>
-{% endfor %}
+{% if count > 0 %}
+    {% for ingredient in ingredients %}
+        <div class="content">
+            <b>Ingredients needed for<a href="/recipe/{{ ingredient[3] }}">{{ ingredient[2] }}:</a></b>
+            <ul>
+            {% for line in ingredient[0].split('\n')%}
+                {% if line.strip() != "" %}
+                    <li>{{ line }}</li>
+                {% endif %}
+            {% endfor %}
+            </ul> 
+            <a href="/delete_cart/{{ ingredient[4] }}" onclick="return confirm('Are you sure you want to delete this list?')">Delete</a> 
+        </div>
+    {% endfor %}
+
+{% else %}
+    You have not added any recipes yet.
+
+{% endif %}
