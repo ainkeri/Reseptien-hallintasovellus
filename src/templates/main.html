@@ -1,21 +1,31 @@
-You are logged in. | <a href="/logout">Log out</a> | <a href="/show_cart">My shopping cart</a>
-<hr>
-<form action="/search" method="GET">
-    <input type="text" name="query" placeholder="Search recepies">
-    <button type="submit">Search</button>
-</form>
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 
-<hr>
-Number of posts: {{ count }} | <a href="/new">Create a new post</a>
-<hr>
-{% for post in recipes %}
-    <i>Recipe:</i> {{ post[1] }}
-    <p>
-    <i>Created by:</i> {{ post[2] }}
-    <p>
-    <i>Posted at:</i> {{ post[3].strftime("%Y-%m-%d %H:%M:%S") }}
-    <p>
-    <a href="/recipe/{{ post[0] }}">Click to view full recipe</a>
-    <hr>
-{% endfor %}
+<body>
+    <br>
+    You are logged in. | <a href="/logout">Log out</a> | <a href="/show_cart">My shopping cart</a>
+
+    <div class="search">
+        <form action="/search" method="GET">
+            <input type="text" name="query" placeholder="Search recepies" class="box">
+            <button id="button" type="submit">Search</button>
+    </div>
+
+    </form>
+    <br>
+    Number of posts: <b>{{ count }}</b> | <a href="/new">Create a new post</a>
+    {% for post in recipes %}
+        <div class="content">
+            <b>{{ post[1] }}</b>
+            <p>
+            Created by: <b>{{ post[2] }}</b>
+            <p>
+            <a href="/recipe/{{ post[0] }}" class="one">Click to view full recipe</a>
+            <p>
+            <i>Date: {{ post[3].strftime("%Y-%m-%d %H:%M:%S") }} </i> 
+        </div>
+    {% endfor %}
+</body>
+
 

@@ -1,38 +1,52 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<br>
 <a href="/main">Return to main page</a>
-<hr>
-<b>Name:</b> {{ recipe[0] }}
-<p>
-<b>Ingredients:</b>
-<ul>
-    {% for ingredient in recipe[1].split('\n') %}
-        {% if ingredient.strip() %}
-            <li>{{ ingredient.strip() }}</li>
-        {% endif %}
-    {% endfor %}
-</ul>
-<p>
-<b>Instructions:</b>
-<ol>
-    {% for instruction in recipe[2].split('\n') %}
-        {% if instruction.strip() %}
-            <li>{{ instruction.strip() }}</li>
-        {% endif %}
-    {% endfor %}
-</ol>
-<hr>
+
+<h3>
+    <u>
+        <b>{{ recipe[0] }}</b>
+    </u>
+</h3>
+
 {% if session.user_id == recipe[3] %}
-    <a href="/edit/{{ recipe[4] }}">Edit post</a>
-    | <a href="/delete/{{ recipe[4] }}" onclick="return confirm('Are you sure you want to delete this post?')">Delete post</a>
+    <a href="/edit/{{ recipe[4] }}" class="shop">Edit</a>
+    <a href="/delete/{{ recipe[4] }}" class="shop" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+    <br>
 {% endif %}
-<hr>
 
+<div class="content">
+    <b>Ingredients:</b>
+    <ul>
+        {% for ingredient in recipe[1].split('\n') %}
+            {% if ingredient.strip() %}
+                <li>{{ ingredient.strip() }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+<div class="content">
+    <b>Instructions:</b>
+    <ol>
+        {% for instruction in recipe[2].split('\n') %}
+            {% if instruction.strip() %}
+                <li>{{ instruction.strip() }}</li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</div>
 
-<form action="{{ url_for('likes.like') }}" method="POST">
-    <input type="hidden" name="post_id" value="{{ recipe[4] }}">
-    <button type="submit">Like</button> {{ like_count }}
-</form>
-<hr>
-<a href="/add_to_cart/{{ recipe[4] }}">Add to cart</a>
-<hr>
-<a href="/comments_list/{{ recipe[4] }}">Show comments</a>
+<br>
 
+<div class="like">
+    <form action="{{ url_for('likes.like') }}" method="POST">
+        <input type="hidden" name="post_id" value="{{ recipe[4] }}">
+        <button id="button" type="submit">Like</button> {{ like_count }}
+    </form>
+</div>
+
+<a href="/comments_list/{{ recipe[4] }}">Comments</a>
+
+<a href="/add_to_cart/{{ recipe[4] }}" class="shop">Add to shopping list</a>

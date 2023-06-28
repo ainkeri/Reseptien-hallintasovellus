@@ -1,15 +1,23 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
 {% if session.user_id == edit_post[3] %}
+    <br>
     <form action="/edit/{{ edit_post[4] }}" method="POST">
         <label for="content">Name: </label>
-        <textarea name="content" id="content">{{ edit_post[0] }}</textarea>
+        <br>
+        <textarea name="content" id="content" class="box">{{ edit_post[0] }}</textarea>
         <br>
         <label for="ingredients">Ingredients: </label>
-        <textarea name="ingredients" id="ingredients">{{ edit_post[1] }}</textarea>
+        <br>
+        <textarea name="ingredients" id="ingredients" class="box">{{ edit_post[1] }}</textarea>
         <br>
         <label for="instructions">Instructions: </label>
-        <textarea name="instructions" id="instructions">{{ edit_post[2] }}</textarea>
         <br>
-        <input type="submit" value="Save">
+        <textarea name="instructions" id="instructions" class="box">{{ edit_post[2] }}</textarea>
+        <br>
+        <input id="button" type="submit" value="Save">
         <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
     </form>
 {% endif %}

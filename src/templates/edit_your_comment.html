@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
 {% if session.user_id == edit_comment2[2] %}
+    <br>
     <a href="/comments_list/{{ edit_comment2[3] }}">Return to comments</a>
-    <hr>
+    <br>
+    <br>
     <form action="/edit_comment/{{ edit_comment2[0] }}" method="POST">
         <label for="content">Comment: </label>
         <br>
-        <textarea name="content" id="content">{{ edit_comment2[1] }}</textarea>
+        <textarea name="content" id="content" class="box">{{ edit_comment2[1] }}</textarea>
         <br>
-        <input type="submit" value="Save">
+        <input id="button" type="submit" value="Save">
         <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
     </form>
 {% endif %}

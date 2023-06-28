@@ -1,13 +1,17 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<br>
 <a href="/comments_list/{{ post_id }}">Return to comments</a>
-<hr>
 <form action="/send_comment/{{ post_id }}" method="post">
     <h2>New comment</h2>
 
     <p>
         Comment: <br>
-        <textarea name="content" rows="1" cols="30"></textarea>
+        <textarea name="content" rows="1" cols="30" class="box"></textarea>
     </p>
 
-    <input type="submit" value="Comment">
+    <input id="button" type="submit" value="Comment">
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>

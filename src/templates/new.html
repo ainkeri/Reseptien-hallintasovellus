@@ -1,23 +1,27 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<br>
 <a href="/main">Return to main page</a>
-<hr>
 <form action="/send" method="post">
     <h2>New recipe</h2>
 
     <p>
         Name: <br>
-        <textarea name="content" rows="1" cols="30" placeholder="Enter name of the recipe"></textarea>
+        <textarea name="content" rows="1" cols="30" placeholder="Enter name of the recipe" class="box"></textarea>
     </p>
 
     <p>
         Ingredients: <br> 
-        <textarea name="ingredients" rows="5" cols="30" placeholder="Enter ingredients, one per line"></textarea>
+        <textarea name="ingredients" rows="5" cols="30" placeholder="Enter ingredients, one per line" class="box"></textarea>
     </p>
 
     <p>
         Instructions: <br>
-        <textarea name="instructions" rows="10" cols="30" placeholder="Enter steps, one per line"></textarea>    
+        <textarea name="instructions" rows="10" cols="30" placeholder="Enter steps, one per line" class="box"></textarea>    
     </p>
 
-    <input type="submit" value="Post">
+    <input id="button" type="submit" value="Post">
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>

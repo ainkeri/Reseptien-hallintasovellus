@@ -1,6 +1,9 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/main.css') }}">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<a href="/main">Back to main page</a>
 {% if count > 0 %}
-    <a href="/main">Back to main page</a>
-    <hr>
     <h2>Search results for "{{ query }}":</h2>
     <ul>
         {% for post in posts %}
