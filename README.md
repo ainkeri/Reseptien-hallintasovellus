@@ -18,6 +18,7 @@ Sovelluksen toimivat ominaisuudet:
 ## Käyttöohje
 
 - Kloonaa repositorio koneellesi
+- Asenna python3.11-venv esim sudo apt install python3.11-venv
 - Luo Pythonin virtuaaliympäristö kansion sisään komennolla python3 -m venv venv
 - Aktivoi virtuaaliympäristö: source venv/bin/activate
 - Asenna flask pip install flask
